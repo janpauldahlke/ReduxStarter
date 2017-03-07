@@ -1,15 +1,18 @@
+//foo
+console.log('foo');
+
+//imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
+//create some html element
+//declare app as function
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const App = () => {
+  return <div>foo<h2>hello</h2></div>;
+}
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+
+//attach some html element to the dom
+//RenderDom.render(App); //needs an instance of app to run,so wrap it in jsx tags
+ReactDOM.render(<App />, document.querySelector('.container'));
