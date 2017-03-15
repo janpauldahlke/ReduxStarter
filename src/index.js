@@ -2,8 +2,9 @@
 console.log('foo');
 
 //imports
-import React from 'react';
+import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
 
 //import from  project files // needs a file reference // so path needs to be relative to index.js
 import SearchBar from './components/searchbar';
@@ -14,6 +15,8 @@ import SearchBar from './components/searchbar';
 //try to uppercase const
 const API_KEY = 'AIzaSyBlY4ab7gBS_j4iZRYHqgmNLwpvNPG0wSc';
 
+
+/* clean up and refoactor below with ytAPI data this time in app
 //create some html element
 //declare app as function
 
@@ -25,6 +28,43 @@ const App = () => {
     </div>
   )
 }
+*/
+class App extends Component{
+  constructor(props){
+    super(props);
+
+    this.state = { videos: [] }
+          //ES6 suggar                    (videos)
+    YTSearch({key:API_KEY, term:'news'}, (data) => {
+      this.setState({videos: data});
+      //this.setState({videos:videos}) ES6 sugar still absract it to //works if key_val are identical
+      //this.setState({ videos });
+    })
+
+  }
+
+  render(){
+    return (
+      <div>
+        <h3>title goes here</h3>
+        <SearchBar />
+      </div>
+
+    )
+  }
+
+}
+
+
+
+//example of using YTSearch
+/*
+YTSearch({key:API_KEY, term:'iron maiden'}, function(data){
+  for(let i = 0;i<=data.length;i++){
+    console.log(data[i].snippet.title);
+  }
+});
+*/
 
 
 //attach some html element to the dom
