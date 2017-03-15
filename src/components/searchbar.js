@@ -15,7 +15,7 @@ class SearchBar extends Component {
   constructor (props) {
     super(props);  //make react.component accessible
     //here i define the object in which states are saved in
-    this.state = { term : '' };
+    this.state = { term : 'default' };
   }
 
 
@@ -26,20 +26,30 @@ class SearchBar extends Component {
     //renders needs to return jsx so here we go
     //return <input onChange={ event => console.log(event.target.value)}/>;
     //return <input onChange={this.onInputChange} /> // ES6 less syntax If we write like this, we need the onInputChange Function in class
+
+    //controlled component follows some rules
+    //term is from constructor and is placeholder
+    //coChange triggers setState, und renderloop immideatly renders into field via value
     return (
       <div>
-        <input onChange={ event => this.setState({ term : event.target.value }) } />
-        value of input : { this.state.term}
+
+        <input
+          value={this.state.term}
+          onChange={ event => this.setState({ term : event.target.value }) }
+           />
+
       </div>
 
     );
   }
 
   //event
+  /*
   onInputChange (event) {
     //console.log('changed');
     console.log(event.target.value);
   }
+  */
 
 }
 //generell:
