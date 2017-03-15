@@ -8,6 +8,7 @@ import YTSearch from 'youtube-api-search';
 
 //import from  project files // needs a file reference // so path needs to be relative to index.js
 import SearchBar from './components/searchbar';
+import VideoList from './components/video_list';
 //
 
 
@@ -43,11 +44,14 @@ class App extends Component{
 
   }
 
+  //how does VideoList knows of content?
+  //the data is passed via props
   render(){
     return (
       <div>
         <h3>title goes here</h3>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
 
     )
