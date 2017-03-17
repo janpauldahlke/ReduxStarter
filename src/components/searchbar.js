@@ -31,7 +31,7 @@ class SearchBar extends Component {
     //term is from constructor and is placeholder
     //coChange triggers setState, und renderloop immideatly renders into field via value
     return (
-      <div>
+      <div className="search-bar">
 
         <input
           value={this.state.term}

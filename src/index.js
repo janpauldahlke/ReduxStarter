@@ -58,7 +58,7 @@ class App extends Component{
   render(){
     return (
       <div>
-        <h3>title goes here</h3>
+        <h3>Fancy React-Youtube_API prct</h3>
         <SearchBar />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
