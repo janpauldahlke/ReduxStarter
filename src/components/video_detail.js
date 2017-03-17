@@ -23,11 +23,12 @@ const VideoDetail = ({ video }) => {
   //css problem on embed-responsive . it produces height0, fix it the hard way in index.html <style>
   return(
       <div className="video-detail col-md-8 container-fluid">
-        <div className="embed-responsive embed-responsive-16by9" >
+        <div className="embed-responsive embed-responsive-16by9">
           <iframe className="embed-responsive-item" src={url} ></iframe>
         </div>
         <div className="details">
           <div className="video-item__title">{ video.snippet.title }</div>
+          <div className="video-item__detail">{ video.snippet.description }</div>
         </div>
       </div>
   )

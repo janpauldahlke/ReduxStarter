@@ -24,6 +24,13 @@
   background-color: #eee;
 }
 
+.video-item__title{
+  text-align: center;
+}
+.video_item__detail{
+  font-size: .8em;
+}
+
 
 /* fixes */
 .embed-responsive{
