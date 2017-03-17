@@ -10,7 +10,12 @@ const VideoList = (props) => {
   //key is needed, or it will create console log error //
   //each element in the array needs an index so react can react fast ;-) and doesnt need to re-render the whole element again
   const videoItems = props.videos.map((video) => {
-    return <VideoListItem key={video.etag} video={video} />
+    return (
+      <VideoListItem
+        onVideoSelect={props.onVideoSelect}
+        key={video.etag}
+        video={video} />
+    );
   });
 
   return(

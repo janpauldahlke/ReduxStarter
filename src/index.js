@@ -35,10 +35,18 @@ class App extends Component{
   constructor(props){
     super(props);
 
-    this.state = { videos: [] }
+    this.state = {
+      videos: [],
+      //create selected video
+      selectedVideo : null
+    };
           //ES6 suggar                    (videos)
-    YTSearch({key:API_KEY, term:'news'}, (data) => {
-      this.setState({videos: data});
+    YTSearch({key:API_KEY, term:'news'}, (videos) => {
+      this.setState({
+        videos: videos,
+        selectedVideo : videos[0] //init to prevent null or undefined
+
+      });
       //this.setState({videos:videos}) ES6 sugar still absract it to //works if key_val are identical
       //this.setState({ videos });
     })
@@ -52,8 +60,10 @@ class App extends Component{
       <div>
         <h3>title goes here</h3>
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]}/>
-        <VideoList videos={this.state.videos} />
+        <VideoDetail video={this.state.selectedVideo}/>
+        <VideoList
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+          videos={this.state.videos} />
       </div>
 
     )

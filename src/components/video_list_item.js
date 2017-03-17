@@ -1,19 +1,18 @@
 import React from 'react';
                     //(props) an diesem hängt video
-const VideoListItem = ({ video }) => {
+const VideoListItem = ({ video, onVideoSelect }) => {
   //nomral syntax for (props)
   //const video = props.video;
   //but ES6 gievs us ({video}) and its idential
 
-
   //for simplifying things ill use a lot of bootstrap here as suggested
-    console.log(video);
-
+    //console.log(video);
   const ImageURL = video.snippet.thumbnails.default.url;
   const VideoName = video.snippet.title;
 
+  //selectedVideo bin on click to li
   return(
-   <li className="list-group-item">
+   <li onClick={() => onVideoSelect(video)} className="list-group-item">
       <div className="video-list media">
         <div className="media-left">
           <img className="media-object"  src={ ImageURL } />
