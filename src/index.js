@@ -9,6 +9,7 @@ import YTSearch from 'youtube-api-search';
 //import from  project files // needs a file reference // so path needs to be relative to index.js
 import SearchBar from './components/searchbar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 //
 
 
@@ -51,6 +52,7 @@ class App extends Component{
       <div>
         <h3>title goes here</h3>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]}/>
         <VideoList videos={this.state.videos} />
       </div>
 
