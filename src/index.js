@@ -5,6 +5,8 @@ console.log('foo');
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
+//throttling requests an search update
+import _ from 'lodash';
 
 //import from  project files // needs a file reference // so path needs to be relative to index.js
 import SearchBar from './components/searchbar';
@@ -60,10 +62,12 @@ class App extends Component{
   //how does VideoList knows of content?
   //the data is passed via props
   render(){
+    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300);
+
     return (
       <div>
         <h3>Fancy React-Youtube_API prct</h3>
-        <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+        <SearchBar onSearchTermChange={videoSearch}/>
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
